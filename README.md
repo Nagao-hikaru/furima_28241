@@ -25,6 +25,7 @@
 | name             | string     | null: false                                 |
 | description      | text       | null: false                                 |
 | user             | references | null: false, index: true, foreign_key: true |
+| price            | integer    | null: false                                 |
 | condition_id     | integer    | null: false                                 |
 | category_id      | integer    | null: false                                 |
 | burden_id        | integer    | null: false                                 |
@@ -34,7 +35,7 @@
 ###Association
 -belongs_to :user
 -has_one :purchase
-belongs_to :user_address
+-has_one :user_address
 
 ##purchasesテーブル
 
@@ -49,13 +50,15 @@ belongs_to :user_address
 
 ##User_addressesテーブル
 
-| column     | type   | options     |
-| ---------- | ------ | ----------- |
-| prefecture | string | null: false |
-| city       | string | null: false |
-| address    | string | null: false |
-| building   | string |             |
-| tel        | string | null: false |
+| column      | type       | options                        |
+| ----------- | ---------- | ------------------------------ |
+| prefecture  | string     | null: false                    |
+| city        | string     | null: false                    |
+| address     | string     | null: false                    |
+| building    | string     |                                |
+| tel         | string     | null: false                    |
+| postal_code | string     | null: false                    |
+| item        | references | null: false, foreign_key: true |
 
 ##Association
-has_many :purchases
+belongs_to :item
