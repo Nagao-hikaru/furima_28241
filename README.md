@@ -19,39 +19,43 @@
 
 ##Itemsテーブル
 
-| column      | type       | options                                     |
-| ----------- | ---------- | ------------------------------------------- |
-| image       | string     | null: false                                 |
-| name        | string     | null: false                                 |
-| description | text       | null: false                                 |
-| user_id     | references | null: false, index: true, foreign_key: true |
+| column           | type       | options                                     |
+| ---------------- | ---------- | ------------------------------------------- |
+| image            | string     | null: false                                 |
+| name             | string     | null: false                                 |
+| description      | text       | null: false                                 |
+| user             | references | null: false, index: true, foreign_key: true |
+| condition_id     | integer    | null: false                                 |
+| category_id      | integer    | null: false                                 |
+| burden_id        | integer    | null: false                                 |
+| area_id          | integer    | null: false                                 |
+| delivery_days_id | integer    | null: false                                 |
 
 ###Association
 -belongs_to :user
 -has_one :purchase
+belongs_to :user_address
 
 ##purchasesテーブル
 
 | column          | type       | options                                     |
 | --------------- | ---------- | ------------------------------------------- |
-| user_id         | references | null: false, index: true, foreign_key: true |
-| item_id         | references | null: false, index: true, foreign_key: true |
-| user_address_id | references | null: false, index: true, foreign_key: true |
+| user            | references | null: false, index: true, foreign_key: true |
+| item            | references | null: false, index: true, foreign_key: true |
 
 ###Association
 -belongs_to :user
 -belongs_to :item
--belongs_to :user_address
 
 ##User_addressesテーブル
 
-| column     | type    | options     |
-| ---------- | ------- | ----------- |
-| prefecture | string  | null: false |
-| city       | string  | null: false |
-| address    | string  | null: false |
-| building   | string  |             |
-| tel        | integer | null: false |
+| column     | type   | options     |
+| ---------- | ------ | ----------- |
+| prefecture | string | null: false |
+| city       | string | null: false |
+| address    | string | null: false |
+| building   | string |             |
+| tel        | string | null: false |
 
 ##Association
-has_one :purchase
+has_many :purchases
