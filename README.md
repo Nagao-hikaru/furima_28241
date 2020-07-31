@@ -35,6 +35,7 @@
 
 ###Association
 -belongs_to :user
+-has_one_attached
 -has_one :purchase
 
 ##purchasesテーブル
