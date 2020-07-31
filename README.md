@@ -21,17 +21,17 @@
 
 ##Itemsテーブル
 
-| column      | type       | options                        |
-| ----------- | ---------- | ------------------------------ |
-| name        | string     | null: false                    |
-| description | text       | null: false                    |
-| category    | string     | null: false                    |
-| condition   | string     | null: false                    |
-| burden      | string     | null: false                    |
-| area        | string     | null: false                    |
-| d_period    | string     | null: false                    |
-| price       | integer    | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
+| column      | type       | options                                     |
+| ----------- | ---------- | ------------------------------------------- |
+| name        | string     | null: false                                 |
+| description | text       | null: false                                 |
+| category    | string     | null: false                                 |
+| condition   | string     | null: false                                 |
+| burden      | string     | null: false                                 |
+| area        | string     | null: false                                 |
+| d_period    | string     | null: false                                 |
+| price       | integer    | null: false                                 |
+| user_id     | references | null: false, index: true, foreign_key: true |
 
 ###Association
 -belongs_to :user
@@ -40,19 +40,19 @@
 
 ##purchasesテーブル
 
-| column      | type       | options                        |
-| ----------- | ---------- | ------------------------------ |
-| card_number | integer    | null: false                    |
-| valid_year  | integer    | null: false                    |
-| valid_month | integer    | null: false                    |
-| s_code      | integer    | null: false                    |
-| prefecture  | string     | null: false                    |
-| city        | string     | null: false                    |
-| address     | string     | null: false                    |
-| building    | string     |                                |
-| tel         | integer    | null: false                    |
-| user_id     | references | null: false, foreign_key: true |
-| item_id     | references | null: false, foreign_key: true |
+| column      | type       | options                                     |
+| ----------- | ---------- | ------------------------------------------- |
+| card_number | integer    | null: false                                 |
+| valid_year  | integer    | null: false                                 |
+| valid_month | integer    | null: false                                 |
+| s_code      | integer    | null: false                                 |
+| prefecture  | string     | null: false                                 |
+| city        | string     | null: false                                 |
+| address     | string     | null: false                                 |
+| building    | string     |                                             |
+| tel         | integer    | null: false                                 |
+| user_id     | references | null: false, index: true, foreign_key: true |
+| item_id     | references | null: false, index: true, foreign_key: true |
 
 ###Association
 -belongs_to :user
