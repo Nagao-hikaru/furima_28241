@@ -5,10 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   KANA_REGEX = /\A[ァ-ン]+\z/.freeze
+  NAME_REGEX = /\A[ぁ-んァ-ン一-龥]+\z/.freeze
   validates :nickname, presence: true
   validates :password, format: { with: PASSWORD_REGEX, message: 'Include both letters and numbers' }
   validates :birthday, presence: true
-  with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'Full-width characters' } do
+  with_options presence: true, format: { with: NAME_REGEX, message: 'Full-width characters' } do
     validates :family_name
     validates :last_name
   end
