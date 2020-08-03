@@ -21,7 +21,6 @@
 
 | column           | type       | options                                     |
 | ---------------- | ---------- | ------------------------------------------- |
-| image            | string     | null: false                                 |
 | name             | string     | null: false                                 |
 | description      | text       | null: false                                 |
 | user             | references | null: false, index: true, foreign_key: true |
@@ -36,6 +35,7 @@
 -belongs_to :user
 -has_one :purchase
 -has_one :user_address
+-has_one_attached :image
 
 ##purchasesテーブル
 

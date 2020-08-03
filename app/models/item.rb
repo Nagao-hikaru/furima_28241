@@ -8,9 +8,9 @@ class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :image, :name, :description, :price, :condition, :category, :area, :burden, :delivery_day,  presence: true
+  validates :name, :description, :price, :condition, :category, :area, :burden, :delivery_day,  presence: true
 
-  validates :price, numericality: {only_integer: true}, length: {in: 300..9999999, message: "Out of setting range"}
+  validates :price, numericality: {only_integer: true}, length: {in: 3..7, message: "Out of setting range"}
 
   validates :condition_id, numericality: { other_than: 1, message: "select" }
   validates :category_id, numericality: { other_than: 1, message: "select" }
