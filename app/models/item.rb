@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :burden
   belongs_to_active_hash :delivery_day
   belongs_to :user
+  has_one_attached :image
 
   validates :image, :name, :description, :price, :condition, :category, :area, :burden, :delivery_day,  presence: true
 

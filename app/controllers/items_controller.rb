@@ -13,11 +13,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-    # if @item = Item.create(item_params)
-    #   redirect_to root_path
-    # else
-    #   render :new
-    # end
   end
 
   private
