@@ -64,7 +64,7 @@ RSpec.describe Item, type: :model do
       it '配送までの日数を選択しないと登録できない' do
         @item.delivery_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Delivery day Select')
+        expect(@item.errors.full_messages).to include('Delivery day select')
       end
 
       it '販売価格を記入しないと登録できない' do

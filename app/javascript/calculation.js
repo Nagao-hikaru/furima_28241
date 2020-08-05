@@ -12,7 +12,6 @@ function calc() {
     benefit = Math.round(benefit);
 
     const result = /^([1-9]\d*|0)$/
-    console.log(result)
 
     if ( price.match(result)){
       tax_price.innerHTML = tax

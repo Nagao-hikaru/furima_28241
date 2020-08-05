@@ -7,14 +7,26 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_day
   belongs_to :user
   has_one_attached :image
-  validates :image, presence: true
-  validates :name, :description, :price, :condition, :category, :area, :burden, :delivery_day, presence: true
+
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :description
+    validates :price
+    validates :condition
+    validates :category
+    validates :area
+    validates :burden
+    validates :delivery_day
+  end
 
   validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999, message: 'Out of setting range' }
 
-  validates :condition_id, numericality: { other_than: 1, message: 'select' }
-  validates :category_id, numericality: { other_than: 1, message: 'select' }
-  validates :area_id, numericality: { other_than: 1, message: 'select' }
-  validates :burden_id, numericality: { other_than: 1, message: 'select' }
-  validates :delivery_day_id, numericality: { other_than: 1, message: 'Select' }
+  with_options numericality: { other_than: 1, message: 'select'} do
+    validates :condition_id
+    validates :category_id
+    validates :area_id
+    validates :burden_id
+    validates :delivery_day_id
+  end
 end
