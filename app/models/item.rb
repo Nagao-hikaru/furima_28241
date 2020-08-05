@@ -22,7 +22,7 @@ class Item < ApplicationRecord
 
   validates :price, numericality: { only_integer: true, greater_than: 300, less_than: 9_999_999, message: 'Out of setting range' }
 
-  with_options numericality: { other_than: 1, message: 'select'} do
+  with_options numericality: { other_than: 1, message: 'select' } do
     validates :condition_id
     validates :category_id
     validates :area_id
