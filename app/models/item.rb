@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_day
   belongs_to :user
   has_one_attached :image
-
+  validates :image, presence: true
   validates :name, :description, :price, :condition, :category, :area, :burden, :delivery_day,  presence: true
 
   validates :price, numericality: {only_integer: true}, length: {in: 3..7, message: "Out of setting range"}
