@@ -2,9 +2,6 @@ function calc() {
   const content_value = document.getElementById("item_price");
   let tax_price = document.getElementById("add-tax-price");
   let profit = document.getElementById("profit");
-
-
-
   
   content_value.addEventListener('input', (e) =>{
     let price = (content_value.value);
@@ -13,11 +10,9 @@ function calc() {
 
     tax = Math.round(tax);
     benefit = Math.round(benefit);
-    // console.log(tax)
-    // console.log(tax_price)
-    var result = /(?<!0)\d+/
-    var result = /\n/
-    // console.log(result)
+
+    const result = /^([1-9]\d*|0)$/
+    console.log(result)
 
     if ( price.match(result)){
       tax_price.innerHTML = tax
@@ -26,17 +21,7 @@ function calc() {
       tax_price.innerHTML = "半角数字のみ入力可能"
       profit.innerHTML = "半角数字のみ入力可能"
     }
-
-
-    // if (benefit){
-    //   profit.innerHTML = benefit
-    // } else{
-    //   profit.innerHTML = "半角数字のみ入力可能"
-    // }
-
-    
   });
-
 }
 
 window.addEventListener("load", calc);
