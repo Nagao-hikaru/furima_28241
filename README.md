@@ -21,7 +21,6 @@
 
 | column           | type       | options                                     |
 | ---------------- | ---------- | ------------------------------------------- |
-| image            | string     | null: false                                 |
 | name             | string     | null: false                                 |
 | description      | text       | null: false                                 |
 | user             | references | null: false, index: true, foreign_key: true |
@@ -30,12 +29,13 @@
 | category_id      | integer    | null: false                                 |
 | burden_id        | integer    | null: false                                 |
 | area_id          | integer    | null: false                                 |
-| delivery_days_id | integer    | null: false                                 |
+| delivery_day_id | integer    | null: false                                 |
 
 ###Association
 -belongs_to :user
 -has_one :purchase
 -has_one :user_address
+-has_one_attached :image
 
 ##purchasesテーブル
 
