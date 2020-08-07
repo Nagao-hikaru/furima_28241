@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    # @item = Item.new(item_params)
   end
 
   private
