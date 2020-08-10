@@ -2,8 +2,13 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :forbit_purchase, only: [:index]
   before_action :forbit_purchased_item, only: [:index]
+
   def index
     @item = Item.find(params[:item_id])
+  end
+
+
+  def create
   end
 
   private
