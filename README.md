@@ -29,7 +29,7 @@
 | category_id      | integer    | null: false                                 |
 | burden_id        | integer    | null: false                                 |
 | area_id          | integer    | null: false                                 |
-| delivery_day_id | integer    | null: false                                 |
+| delivery_day_id  | integer    | null: false                                 |
 
 ###Association
 -belongs_to :user

@@ -31,7 +31,7 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with model: [@item, @purchase], id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>
@@ -56,9 +56,9 @@
           <span class="indispensable">必須</span>
         </div>
         <div class='input-expiration-date-wrap'>
-          <%= f.text_area :year, class:"input-expiration-date", placeholder:"例)3" %>
+          <%= f.text_area :exp_month, class:"input-expiration-date", placeholder:"例)3" %>
           <p>月</p>
-          <%= f.text_area :month, class:"input-expiration-date", placeholder:"例)23" %>
+          <%= f.text_area :exp_year, class:"input-expiration-date", placeholder:"例)23" %>
           <p>年</p>
         </div>
       </div>
@@ -88,7 +88,7 @@
           <label class="form-text">都道府県</label>
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:prefecture, Prefecture.all, :id, :name, {}, {class:"select-box"}) %>
+        <%# <%= f.collection_select(:prefecture, Prefecture.all, :id, :name, {}, {class:"select-box"}) %> 
       </div>
       <div class="form-group">
         <div class='form-text-wrap'>
