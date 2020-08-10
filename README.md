@@ -52,7 +52,7 @@
 
 | column        | type       | options                        |
 | ------------- | ---------- | ------------------------------ |
-| prefecture_id | integer    | null: false                    |
+| area_id       | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | building      | string     |                                |

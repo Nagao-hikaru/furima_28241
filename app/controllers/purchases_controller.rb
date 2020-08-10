@@ -5,16 +5,19 @@ class PurchasesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    @purchase = Purchase.new
+    # @purchase = Purchase.new
   end
 
 
   def create
     @item = Item.find(params[:item_id])
-    @purchase = Purchase.new(item_id: purchase_params[:item_id], user_id: current_user.id)
-    if @purchase.valid?
+
+    @item_address = ItemAddress.new(purchase_params)
+
+    if @item_address.valid?
       pay_item
-      @purchase.save
+      binding.pry
+      @item_address.save
       return redirect_to root_path
     else
       render 'index'
@@ -38,8 +41,10 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.permit(:item_id, :token).merge(uer_id: current_user.id)
+    params.permit(:item_id, :token, :postal_code, :city, :area_id, :address, :tel, :user_id).merge(user_id: current_user.id)
   end
+
+
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]

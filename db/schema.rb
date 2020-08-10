@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_065718) do
   end
 
   create_table "user_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "prefecture_id", null: false
+    t.integer "area_id", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
@@ -92,4 +92,5 @@ ActiveRecord::Schema.define(version: 2020_08_10_065718) do
   add_foreign_key "items", "users"
   add_foreign_key "purchases", "items"
   add_foreign_key "purchases", "users"
+  add_foreign_key "user_addresses", "items"
 end
