@@ -29,7 +29,7 @@
 | category_id      | integer    | null: false                                 |
 | burden_id        | integer    | null: false                                 |
 | area_id          | integer    | null: false                                 |
-| delivery_day_id | integer    | null: false                                 |
+| delivery_day_id  | integer    | null: false                                 |
 
 ###Association
 -belongs_to :user
@@ -50,15 +50,15 @@
 
 ##User_addressesテーブル
 
-| column      | type       | options                        |
-| ----------- | ---------- | ------------------------------ |
-| prefecture  | string     | null: false                    |
-| city        | string     | null: false                    |
-| address     | string     | null: false                    |
-| building    | string     |                                |
-| tel         | string     | null: false                    |
-| postal_code | string     | null: false                    |
-| item        | references | null: false, foreign_key: true |
+| column        | type       | options                        |
+| ------------- | ---------- | ------------------------------ |
+| area_id       | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building      | string     |                                |
+| tel           | string     | null: false                    |
+| postal_code   | string     | null: false                    |
+| item          | references | null: false, foreign_key: true |
 
 ##Association
 belongs_to :item

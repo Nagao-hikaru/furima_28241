@@ -37,6 +37,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :show
+    end
   end
 
   private
@@ -48,4 +49,7 @@ class ItemsController < ApplicationController
   def set_message
     @item = Item.find(params[:id])
   end
+
+  
+
 end
