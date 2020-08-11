@@ -5,13 +5,14 @@ class ItemAddress
 
 
  
-
+  POSTAL_CODE_REGEX = /\A[0-9]{3}-[0-9]{4}\z/.freeze
+  TEL_REGEX = /\A\d{10,11}\z/.freeze
 
   with_options presence: true do
-    validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+    validates :postal_code, format: {with: POSTAL_CODE_REGEX}
     validates :city
     validates :address
-    validates :tel, format: {with: /\A\d{10,11}\z/ }
+    validates :tel, format: {with: TEL_REGEX }
     validates :area_id
     validates :token
   end
