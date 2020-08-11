@@ -49,7 +49,4 @@ class ItemsController < ApplicationController
   def set_message
     @item = Item.find(params[:id])
   end
-
-  
-
 end

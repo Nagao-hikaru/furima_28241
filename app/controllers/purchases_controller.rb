@@ -8,13 +8,12 @@ class PurchasesController < ApplicationController
     @item_address = ItemAddress.new
   end
 
-
   def create
     @item_address = ItemAddress.new(purchase_params)
     if @item_address.valid?
       pay_item
       @item_address.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -24,16 +23,12 @@ class PurchasesController < ApplicationController
 
   def forbit_purchase
     @item = Item.find(params[:item_id])
-    if current_user == @item.user
-      redirect_to root_path 
-    end
+    redirect_to root_path if current_user == @item.user
   end
 
   def forbit_purchased_item
     @item = Item.find(params[:item_id])
-    if @item.purchase
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.purchase
   end
 
   def purchase_params
@@ -44,13 +39,12 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 end
