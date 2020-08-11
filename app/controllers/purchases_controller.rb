@@ -16,11 +16,9 @@ class PurchasesController < ApplicationController
     binding.pry
     if @item_address.valid?
       pay_item
-      binding.pry
       @item_address.save
       return redirect_to root_path
     else
-      binding.pry
       render 'index'
     end
   end
@@ -48,7 +46,6 @@ class PurchasesController < ApplicationController
 
 
   def pay_item
-    binding.pry
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
