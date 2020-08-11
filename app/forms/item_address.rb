@@ -18,7 +18,7 @@ class ItemAddress
   validates :area_id, numericality: { other_than: 1 }
 
   def save
-
+   binding.pry
      Purchase.create(item_id: item_id, user_id: user_id)
 
     UserAddress.create(postal_code: postal_code, area_id: area_id, city: city, address: address, tel: tel, item_id: item_id)

@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    # @purchase = Purchase.new
+    @item_address = ItemAddress.new
   end
 
 
@@ -13,13 +13,14 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
 
     @item_address = ItemAddress.new(purchase_params)
-
+    binding.pry
     if @item_address.valid?
       pay_item
       binding.pry
       @item_address.save
       return redirect_to root_path
     else
+      binding.pry
       render 'index'
     end
   end
@@ -41,12 +42,13 @@ class PurchasesController < ApplicationController
   end
 
   def purchase_params
-    params.permit(:item_id, :token, :postal_code, :city, :area_id, :address, :tel, :user_id).merge(user_id: current_user.id)
+    params.permit(:item_id, :building, :token, :postal_code, :city, :area_id, :address, :tel, :user_id).merge(user_id: current_user.id)
   end
 
 
 
   def pay_item
+    binding.pry
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
