@@ -25,7 +25,7 @@
       </span>
     </div>
 
-    <%# ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
+
     <% if current_user == @item.user && @item.purchase.blank? %>
 
     <%= link_to '商品の編集', edit_item_path(@item), method: :get, class: "item-red-btn" %>
@@ -34,14 +34,10 @@
     <% end %>
 
 
-
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <% if @item.purchase.blank?  && current_user != @item.user %>
     <%= link_to '購入画面に進む', item_purchases_path(@item.id) ,class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
     <% end %>
 
-    <%# //ログインしていて、なおかつ、ログインしているユーザと出品しているユーザが同一人物でないとき表示しましょう。 %>
 
     <div class="item-explain-box">
       <span><%= @item.description %></span>
@@ -85,7 +81,6 @@
       </div>
     </div>
   </div>
-  <%# /商品の概要 %>
 
   <div class="comment-box">
     <form>
