@@ -2,15 +2,14 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: [:index]
   before_action :forbit_purchase, only: [:index]
   before_action :forbit_purchased_item, only: [:index]
+  before_action :set_message, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @item_address = ItemAddress.new
   end
 
 
   def create
-    @item = Item.find(params[:item_id])
     @item_address = ItemAddress.new(purchase_params)
     if @item_address.valid?
       pay_item
@@ -41,6 +40,9 @@ class PurchasesController < ApplicationController
     params.permit(:item_id, :building, :token, :postal_code, :city, :area_id, :address, :tel, :user_id).merge(user_id: current_user.id)
   end
 
+  def set_message
+    @item = Item.find(params[:item_id])
+  end
 
 
   def pay_item
