@@ -11,7 +11,7 @@ class ItemAddress
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
     validates :city
     validates :address
-    validates :tel
+    validates :tel, format: {with: /\A\d{10,11}\z/ }
     validates :area_id
     validates :token
   end

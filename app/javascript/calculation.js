@@ -1,3 +1,4 @@
+
 function calc() {
   const content_value = document.getElementById("item_price");
   let tax_price = document.getElementById("add-tax-price");
@@ -23,5 +24,9 @@ function calc() {
   });
 }
 
+
+
 window.addEventListener("load", calc);
+
+
 
