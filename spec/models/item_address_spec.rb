@@ -7,7 +7,12 @@ RSpec.describe ItemAddress, type: :model do
     end
 
     it '全ての値が正しく入力されていれば保存できること' do
-      expect(@item_address). to be_valid
+      expect(@item_address).to be_valid
+    end
+
+    it '建物名が空でも保存できること'do
+      @item_address.building = nil
+      expect(@item_address).to be_valid
     end
 
     it 'token情報がないと保存できない' do
