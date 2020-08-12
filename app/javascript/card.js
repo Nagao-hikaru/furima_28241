@@ -3,7 +3,7 @@ const pay = () => {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
 
-  
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -28,16 +28,15 @@ const pay = () => {
         document.getElementById("cvc").removeAttribute("name");
         document.getElementById("exp_month").removeAttribute("name");
         document.getElementById("exp_year").removeAttribute("name");
-
         document.getElementById("charge-form").submit();
-        document.getElementById("charge-form").requestFullscreen();
+        document.getElementById("charge-form").reset();
       } else {
         document.getElementById("number").removeAttribute("name");
         document.getElementById("cvc").removeAttribute("name");
         document.getElementById("exp_month").removeAttribute("name");
         document.getElementById("exp_year").removeAttribute("name");
-        
         document.getElementById("charge-form").submit();
+        document.getElementById("charge-form").reset();
       }
     });
   });
